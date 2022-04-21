@@ -10,30 +10,13 @@ export async function start() {
   const router = new Router();
   router
     .get("/", (ctx) => ctx.response.redirect("./index.html"))
-    .get(
-      "/index.html",
-      (ctx) => sendFile(ctx, "index.eta", { siteName: cfg.siteName }),
-    )
-    .get(
-      "/login.html",
-      (ctx) => sendFile(ctx, "login.eta", { siteName: cfg.siteName }),
-    )
-    .get(
-      "/signup.html",
-      (ctx) => sendFile(ctx, "signup.eta", { siteName: cfg.siteName }),
-    )
-    .get(
-      "/app.html",
-      (ctx) => sendFile(ctx, "app.eta", { siteName: cfg.siteName }),
-    )
     .post("/signup", (ctx) => signupUser(ctx))
     .post("/login", (ctx) => loginUser(ctx))
     .get("/logout", (ctx) => logoutUser(ctx))
-    .get("/userProfile", (ctx) => getUserProfile(ctx));
-
+    .get("/userProfile", (ctx) => getUserProfile(ctx))
+    .get("/(.*\..*)", (ctx) => sendFile(ctx, { siteName: cfg.siteName }));
 
   const app = new Application();
-
   app.use(router.routes());
   app.use(router.allowedMethods());
 
@@ -41,8 +24,9 @@ export async function start() {
   await app.listen({ port: cfg.serverPort });
 }
 
-async function sendFile(ctx: Context, fileName: string, data: any) {
-  const file = await renderFile(`${fileName}`, data) as string;
-  ctx.response.body = file;
-  ctx.response.headers.set("Content-Type", "text/html");
+async function sendFile(ctx: Context, data: any) {
+    const fileName = ctx.request.url.pathname.split(".")[0]+".eta";
+    const file = await renderFile(`${fileName}`, data) as string;
+    ctx.response.body = file;
+    ctx.response.headers.set("Content-Type", "text/html");
 }
