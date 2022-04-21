@@ -25,8 +25,8 @@ export async function start() {
 }
 
 async function sendFile(ctx: Context, data: any) {
-    const fileName = ctx.request.url.pathname.split(".")[0]+".eta";
-    const file = await renderFile(`${fileName}`, data) as string;
-    ctx.response.body = file;
-    ctx.response.headers.set("Content-Type", "text/html");
+  const fileName = ctx.request.url.pathname.split(".")[0] + ".eta";
+  const file = await renderFile(`${fileName}`, data) as string;
+  ctx.response.body = file;
+  ctx.response.headers.set("Content-Type", "text/html");
 }

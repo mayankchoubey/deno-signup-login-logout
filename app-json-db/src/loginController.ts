@@ -22,7 +22,7 @@ export async function loginUser(ctx: Context) {
     ctx.response.status = 401;
     if (e instanceof Deno.errors.NotFound) {
       ctx.response.body = "User does not exists";
-    } else if(e instanceof Deno.errors.PermissionDenied) {
+    } else if (e instanceof Deno.errors.PermissionDenied) {
       ctx.response.body = "Wrong password";
     }
   }
