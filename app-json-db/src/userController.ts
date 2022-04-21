@@ -21,7 +21,6 @@ export async function getUserProfile(ctx: Context) {
     const userData = await getUser(email);
     ctx.response.body = { name: userData.name, email: userData.email };
   } catch (e) {
-    console.log(e);
     ctx.response.status = 500;
     if (e instanceof Deno.errors.NotFound) {
       ctx.response.body = "User does not exists";
