@@ -14,3 +14,4 @@ To run this app locally:
 - Clone the repo
 - Change the folder according to the DB type
 - Run the deno application using ```./runApp```
+- Open ```http://localhost:8000``` in the browser
