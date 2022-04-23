@@ -1,0 +1,1 @@
+deno run --allow-read=./ --allow-net=:8000,:27017 --watch server.ts

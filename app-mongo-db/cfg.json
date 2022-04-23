@@ -1,0 +1,12 @@
+{
+  "serverPort": 8000,
+  "siteName": "Deno Demo using Mongo",
+  "jwtSecret": "secret",
+  "mongo": {
+    "user": "denoUser",
+    "password": "denoPwd",
+    "host": "127.0.0.1",
+    "port": "27017",
+    "db": "deno-db"
+  }
+}
