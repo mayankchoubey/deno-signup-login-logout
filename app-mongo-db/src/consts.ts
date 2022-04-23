@@ -15,10 +15,10 @@ export interface LoginData {
 }
 
 export interface UserSchema {
-    _id: string;
-    name: string;
-    email: string;
-    password: string
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
 }
 
-export const COLLECTION_NAME = 'users';
+export const COLLECTION_NAME = "users";

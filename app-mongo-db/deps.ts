@@ -12,7 +12,4 @@ export {
   verify as verifyToken,
 } from "https://deno.land/x/djwt/mod.ts";
 export type { Header as JWTHeader } from "https://deno.land/x/djwt/mod.ts";
-export {
-    MongoClient,
-    Collection
-} from "https://deno.land/x/mongo/mod.ts";
+export { Collection, MongoClient } from "https://deno.land/x/mongo/mod.ts";

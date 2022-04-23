@@ -1,15 +1,15 @@
-import {MongoClient, Collection} from "../deps.ts";
-import { printError} from "./utils.ts";
+import { Collection, MongoClient } from "../deps.ts";
+import { printError } from "./utils.ts";
 import cfg from "../cfg.json" assert { type: "json" };
-import { UserSchema, COLLECTION_NAME} from "./consts.ts";
+import { COLLECTION_NAME, UserSchema } from "./consts.ts";
 
-let dbConn:Collection<UserSchema>;
+let dbConn: Collection<UserSchema>;
 
 export async function addRecord(id: string, data: any) {
   await dbConn.insertOne({
     _id: id,
-    ...data 
-  })
+    ...data,
+  });
 }
 
 export async function getRecord(id: string) {
@@ -17,7 +17,8 @@ export async function getRecord(id: string) {
 }
 
 async function connectDatabase() {
-  const mongoPath = `mongodb://${cfg.mongo.user}:${cfg.mongo.password}@${cfg.mongo.host}:${cfg.mongo.port}/${cfg.mongo.db}`
+  const mongoPath =
+    `mongodb://${cfg.mongo.user}:${cfg.mongo.password}@${cfg.mongo.host}:${cfg.mongo.port}/${cfg.mongo.db}`;
   try {
     const client = new MongoClient();
     await client.connect(mongoPath);
@@ -25,7 +26,7 @@ async function connectDatabase() {
     dbConn = db.collection<UserSchema>(COLLECTION_NAME);
     console.log("Connected to mongo database");
   } catch (e) {
-    printError("Unable to connect to database: "+e.message);
+    printError("Unable to connect to database: " + e.message);
     Deno.exit(1);
   }
 }
