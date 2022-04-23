@@ -22,7 +22,7 @@ async function checkAccess() {
   if (
     (await Deno.permissions.query({
       name: "net",
-      host: `0.0.0.0:${cfg.serverPort}`,
+      host: `${cfg.mongo.host}:${cfg.mongo.port}`,
     })).state !== "granted"
   ) {
     printError(`Missing net permission to 0.0.0.0:${cfg.serverPort}`);
