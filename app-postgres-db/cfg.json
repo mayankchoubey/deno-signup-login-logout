@@ -1,0 +1,12 @@
+{
+  "serverPort": 8000,
+  "siteName": "Deno Demo using Postgres",
+  "jwtSecret": "secret",
+  "postgres": {
+    "user": "denouser",
+    "password": "denoPwd",
+    "host": "127.0.0.1",
+    "port": "5432",
+    "db": "deno-db"
+  }
+}
