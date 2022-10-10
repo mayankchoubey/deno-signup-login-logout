@@ -10,7 +10,6 @@ There are different variants of this app depending on the storage type:
 - [JSON file DB](app-json-db)
 - [Mongo](app-mongo-db)
 - [Postgres](app-postgres-db)
-- [MySQL](app-mysql-db)
 
 To run this app locally:
 
